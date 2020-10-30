@@ -97,7 +97,8 @@ class Bot:
                         actionChain = webdriver.ActionChains(self.driver)
                         sleep(4)
                         actionChain.key_down(Keys.SPACE).perform()
-                        for c in range(2):
+                        #count is selected according to your opinion for scroll list
+                        for c in range(count):
                             j = 6
                             while (j <= 12):
                                 xpath = "/html/body/div[5]/div/div/div[2]/div/div/div[" + str(j) + "]/div[3]/button"
