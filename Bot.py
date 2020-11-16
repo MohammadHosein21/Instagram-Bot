@@ -121,7 +121,7 @@ class Bot:
                 btn_next.click()
                 sleep(5)
 
-        def postComment(self, tag, comment):
+    def postComment(self, tag, comment):
         tag_url = TAG_URL + tag
         self.driver.get(tag_url)
         sleep(7)
