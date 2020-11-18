@@ -152,6 +152,32 @@ class Bot:
                 btn_next = self.driver.find_element_by_class_name("coreSpriteRightPaginationArrow")
                 btn_next.click()
                 sleep(5)
+                
+    def unfollow(self, page_id):
+        page_url = IG_URL + page_id
+        self.driver.get(page_url)
+        sleep(5)
+        btn_following = self.driver.find_element_by_partial_link_text('following')
+        btn_following.click()
+        sleep(5)
+        WebDriverWait(self.driver, 10).until(lambda d: d.find_element_by_css_selector('div[role="dialog"]'))
+        for i in range(300):
+            self.driver.execute_script('''
+            var fDialog = document.querySelector('div[role="dialog"] .isgrP');
+            fDialog.scrollTop = fDialog.scrollHeight
+            ''')
+        for i in range(10):
+            for i in range(10):
+                self.driver.find_element_by_xpath('//button[text()="Following"]').click()
+                self.driver.find_element_by_xpath('//button[text()="Unfollow"]').click()
+                sleep(5)
+            WebDriverWait(self.driver, 10).until(lambda d: d.find_element_by_css_selector('div[role="dialog"]'))
+            for i in range(5):
+                self.driver.execute_script('''
+                var fDialog = document.querySelector('div[role="dialog"] .isgrP');
+                fDialog.scrollTop = fDialog.scrollHeight
+                ''') 
+                
 # if __name__ == '__main__':
 #     bot = Bot()
 #     bot.login()
