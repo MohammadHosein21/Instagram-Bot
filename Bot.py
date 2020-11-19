@@ -178,7 +178,24 @@ class Bot:
                 fDialog.scrollTop = fDialog.scrollHeight
                 ''') 
                 
-# if __name__ == '__main__':
+if __name__ == '__main__':
+    bot = Bot()
+    bot.login()
+    bot.enterUsernamePassword(username_input='', password_input='')
+
+
+    def task():
+        bot.unfollow('')
+        bot.likePhoto("", 1)
+        bot.postComment("", "")
+        bot.getFollowersNumber(page_id="page")
+        bot.followOtherpage("")
+
+
+    schedule.every(1).day.do(task)
+    while True:
+        schedule.run_pending()
+        sleep(1)
 #     bot = Bot()
 #     bot.login()
 #     bot.enterUsernamePassword(username_input='', password_input='')
