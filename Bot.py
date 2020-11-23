@@ -64,8 +64,15 @@ class Bot:
             expected_conditions.presence_of_element_located((By.CSS_SELECTOR, "#react-root > section > main")))
         slfw = BeautifulSoup(page_content.get_attribute('innerHTML'), 'html.parser')
         num_flw = slfw.findAll('span', {'class': 'g47SY'})
-        num = num_flw[1].getText()
-        return num
+        num = num_flw[1].getText().replace(',', '')
+        if 'k' in num:
+            num = float(num[:-1]) * 1000
+            return num
+        elif 'm' in num:
+            num = float(num[:-1]) * 1000000
+            return num
+        else:
+            return num
 
     def followOtherpage(self, tag):
         tag_url = TAG_URL + tag
