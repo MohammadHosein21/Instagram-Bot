@@ -72,7 +72,7 @@ class Bot:
             num = float(num[:-1]) * 1000000
             return num
         else:
-            return num
+            return float(num)
 
     def followOtherpage(self, tag):
         tag_url = TAG_URL + tag
